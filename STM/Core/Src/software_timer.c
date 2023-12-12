@@ -13,11 +13,13 @@ void setTimer(int timer_ID, int duration){
 	timer_counter[timer_ID] = duration;
 	timer_flag[timer_ID] = 0;
 }
-void timerRun(int timer_ID){
-	if(timer_counter[timer_ID] > 0){
-		timer_counter[timer_ID]--;
-		if(timer_counter[timer_ID] <= 0){
-			timer_flag[timer_ID] = 1;
+void timerRun(){
+	for(int i = 0; i < 10; i++){
+		if(timer_counter[i] > 0){
+			timer_counter[i]--;
+			if(timer_counter[i] <= 0){
+				timer_flag[i] = 1;
+			}
 		}
 	}
 }

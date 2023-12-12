@@ -6,7 +6,7 @@
  */
 #include "global.h"
 
-//enum ModeState MODE;
+enum ModeState MODE;
 //enum AutoState autostate;
 
 
@@ -25,14 +25,14 @@ int countdownFirstCoupleLed;
 int countdownSecondCoupleLed;
 
 void setValues(void){
-//	MODE = MODE1;
-//	autostate = RED_GREEN;
+	MODE = MODE1;
+//	autostate = AUTO_INIT;
 
 	modeSeg = FIRST;
 
 	firstCoupleLedAutoState = LED_INIT;
 	secondCoupleLedAutoState = LED_INIT;
-	seg7AutoState = FIRST;
+	seg7AutoState = SEG_INIT;
 
 	countdownFirstCoupleLed = redDelay;
 	countdownSecondCoupleLed = greenDelay;
