@@ -102,17 +102,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   SCH_Init();
-//
-//  SCH_Add_Task(auto_run, 100, 25);
-//  SCH_Add_Task(manual_run, 210, 25);
-//  SCH_Add_Task(led3, 320, 150);
-//  SCH_Add_Task(led4, 430, 200);
-//  SCH_Add_Task(led5, 540, 250);
 
-	SCH_Add_Task(seg_fsm, 100, 50);
-	SCH_Add_Task(RED_GREEN, 110, 100);
-  setValues();
-  displayFirstLedCouple(LED_INIT);
+	SCH_Add_Task(auto_run, 0, 1);
+	SCH_Add_Task(manual_run, 0, 1);
+	SCH_Add_Task(timerRun, 0, 1);
+	SCH_Add_Task(getKeyInput, 0, 1);
+	setValues();
+	displayFirstLedCouple(LED_INIT);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -120,8 +116,8 @@ int main(void)
     /* USER CODE BEGIN 3 */
 //	  auto_run();
 //	  manual_run();
-	  SCH_Dispatch_Task();
-		HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
+	 SCH_Dispatch_Task();
+	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
   }
   /* USER CODE END 3 */
 }
@@ -304,9 +300,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback( TIM_HandleTypeDef * htim ) {
-	update_time();
 	SCH_Update();
-	getKeyInput();
 }
 /* USER CODE END 4 */
 
